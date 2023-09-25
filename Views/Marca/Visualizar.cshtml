@@ -1,0 +1,16 @@
+﻿@model Prova_web.Models.Marca
+
+@{
+    ViewBag.Title = "Visualizar";
+}
+
+<h2>Visualizar</h2>
+
+@Html.Partial("_FrmMarca")
+
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,31 @@
+﻿@model Prova_web.Models.Cliente
+
+@{
+    ViewBag.Title = "Excluir";
+}
+
+<h2>Excluir</h2>
+<br />
+
+<h3>Deseja realmente excluir este registro?</h3>
+<br />
+<div>
+    <h4>Cliente</h4>
+    <hr />
+
+    @Html.Partial("_FrmCliente")
+
+
+
+    @using (Html.BeginForm("ExcluirSoft", "Cliente", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.AntiForgeryToken()
+        <br />
+        <div class="form-actions no-color">
+            <input type="submit" value="Confirmar" class="btn btn-dark" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

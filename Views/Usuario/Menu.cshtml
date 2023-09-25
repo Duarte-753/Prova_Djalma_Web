@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Prova_web.Models.Usuario>
+
+@{
+    ViewBag.Title = "Menu";
+}
+<div class="col-md-4">
+    <br />
+    @using (Html.BeginForm("Index", "Cliente"))
+    {
+        <div class="form-group">
+            <input type="submit" value="Cliente" class="btn btn-primary" />
+        </div>
+    }
+</div>
+
+<div class="col-md-4">
+    <br />
+    @using (Html.BeginForm("Index", "Produto"))
+    {
+        <div class="form-group">
+            <input type="submit" value="Produto" class="btn btn-primary" />
+        </div>
+    }
+</div>
+<h2>Gerenciar Usuarios</h2>
+
+
+@using (Html.BeginForm("NovoUsuario", "Usuario"))
+{
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <br>
+            <input type="submit" value="Novo Usuario" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Celular)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Celular)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Detalhes", "Visualizar", new { id = item.Id }) |
+                @Html.ActionLink("Excluir", "Excluir", new { id = item.Id })
+
+            </td>
+        </tr>
+    }
+    <br />
+
+</table>
+
+

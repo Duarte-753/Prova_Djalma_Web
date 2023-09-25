@@ -1,0 +1,100 @@
+﻿@model Prova_web.Models.Produto
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm("Index", "Produto"))
+{
+    <input type="submit" value="Pesquisar" class="btn btn-dark" />
+
+    <div class="row">
+        <br />
+        <div class="col-8">
+            @Html.LabelFor(model => model.Descricao)
+            @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control col-12" } })
+        </div>
+        <div class="col-4">
+            @Html.LabelFor(model => model.Marca_P)
+            @Html.DropDownList("Marca_P", new SelectList(ViewBag.ListaMarcas, "Marca_M", "Marca_M"), new { @class = "form-control col-12" })
+
+        </div>
+    </div>
+    <br />
+
+}
+<h2>Index</h2>
+
+
+@using (Html.BeginForm("NovoProduto", "Produto"))
+{
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <br>
+            <input type="submit" value="Novo Produto" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+
+@using (Html.BeginForm("Index", "Marca"))
+{
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <br>
+            <input type="submit" value="Nova Marca" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EAN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreçoVenda)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Marca_P)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estoque)
+        </th>
+        <th></th>
+    </tr>
+
+    @if (ViewBag.ListaProdutos != null)
+    {
+        foreach (var item in ViewBag.ListaProdutos)
+        {
+            <tr>
+                <td>
+                    @Html.Raw(item.Descricao)
+                </td>
+                <td>
+                    @Html.Raw(item.EAN)
+                </td>
+                <td>
+                    @Html.Raw(item.PreçoVenda)
+                </td>
+                <td>
+                    @Html.Raw(item.Marca_P)
+                </td>
+                <td>
+                    @Html.Raw(item.Estoque)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditarProduto", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "VisualizarProduto", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "ExcluirProduto", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    }
+
+
+</table>

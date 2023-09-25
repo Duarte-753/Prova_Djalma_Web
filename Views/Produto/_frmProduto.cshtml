@@ -1,0 +1,41 @@
+﻿@model Prova_web.Models.Produto
+
+<div class="form-horizontal">
+    <br />
+    <br />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="row form-group">
+        <div class="col-md-6">
+            @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-6" })
+            @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control", placeholder = "Chocolate" } })
+            @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.EAN, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.EditorFor(model => model.EAN, new { htmlAttributes = new { @class = "form-control", placeholder = "1215456456456123" } })
+            @Html.ValidationMessageFor(model => model.EAN, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.PreçoVenda, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.PreçoVenda, new { htmlAttributes = new { @class = "form-control", placeholder = "R$ 09,25" } })
+            @Html.ValidationMessageFor(model => model.PreçoVenda, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="row form-group">
+        <div class="col-md-9">
+            @Html.LabelFor(model => model.Estoque, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.EditorFor(model => model.Estoque, new { htmlAttributes = new { @class = "form-control col-12", placeholder = "Quantidade" } })
+            @Html.ValidationMessageFor(model => model.Estoque, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-3">
+            @Html.LabelFor(model => model.Marca_P)
+            @Html.DropDownList("Marca_P", new SelectList(ViewBag.ListaMarcas, "Marca_M", "Marca_M"), "Selecione uma Marca...", new { @class = "form-control dropdown-toggle col-12" })
+        </div>
+    </div>
+</div>
+

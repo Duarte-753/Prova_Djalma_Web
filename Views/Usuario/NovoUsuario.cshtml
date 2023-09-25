@@ -1,0 +1,33 @@
+﻿@model Prova_web.Models.Usuario
+@{
+    ViewBag.Title = "NovoUsuario";
+}
+
+<h2>Cadastrar Novo Usuario</h2>
+
+
+@using (Html.BeginForm("SalvarUsuario", "Usuario", FormMethod.Post))
+{
+    <div class="form-horizontal">
+  
+        <hr />
+        <h3>Preencha as informações Abaixo</h3>
+
+
+        @Html.Partial("_FrmUsuario")
+
+        <br />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-dark" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Voltar para o Menu", "Menu")
+</div>
+
+

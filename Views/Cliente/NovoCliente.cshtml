@@ -1,0 +1,35 @@
+﻿@model Prova_web.Models.Cliente
+
+@{
+    ViewBag.Title = "Novo cliente";
+}
+
+<h2>Novo Cliente</h2>
+
+@using (Html.BeginForm("SalvarCliente", "Cliente", FormMethod.Post))
+{
+
+    <div class="form-horizontal">
+        <hr />
+
+        @Html.Partial("_FrmCliente")
+
+        <br />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-dark" />
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Index", "Cliente"))
+{
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <br>
+            <input type="submit" value="Voltar" class="btn btn-primary" />
+        </div>
+    </div>
+}

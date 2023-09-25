@@ -1,0 +1,35 @@
+﻿@model Prova_web.Models.Produto
+
+@{
+    ViewBag.Title = "EditarProduto";
+}
+
+<h2>Editar Cliente</h2>
+
+
+@using (Html.BeginForm("SalvarAlteracoesProduto", "Produto", FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-horizontal">
+        <h4>Cliente</h4>
+        <hr />
+
+
+        @Html.Partial("_FrmProduto")
+
+        <br />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-dark" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
